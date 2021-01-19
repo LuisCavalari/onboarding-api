@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\NewUserRegistred;
+use App\Events\UserLogin;
+use App\Listeners\RegisterLastAccess;
 use App\Listeners\SendWelcomeMail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -17,7 +19,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        NewUserRegistred::class => [ SendWelcomeMail::class]
+        NewUserRegistred::class => [ SendWelcomeMail::class],
+        UserLogin::class => [RegisterLastAccess::class]
     ];
 
     /**
