@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('number');
             $table->string('province');
             $table->string('civilState');
+            $table->dateTime('last_login')->nullable();
             $table->timestamps();
         });
     }
