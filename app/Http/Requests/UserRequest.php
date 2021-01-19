@@ -27,7 +27,8 @@ class UserRequest extends FormRequest
     {
         return [
             'required' => 'Um :attribute  é necessário',
-            'in' => 'O :attribute  não esta entre :values'
+            'in' => 'O :attribute  não esta entre :values',
+            'email.unique' => 'Este email ja foi registrado'
         ];
     }
     public function rules()
@@ -36,7 +37,7 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'phone' => 'required',
             'zipCode' => 'required|max:9',
-            'email' => 'email|required',
+            'email' => 'email|required|email|unique:users,email',
             'address' => 'required',
             'number' => 'required|numeric',
             'neighborhood' => 'required',
