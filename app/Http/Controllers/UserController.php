@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\UserRequest;
+use App\User;
+use Illuminate\Support\Facades\Validator;
 
-class User extends Controller
+class UserController extends Controller
 {
-    function store(Request $request) {
-        $rules = [
-            'name' => 'required',
-            'phone' => 'required',
-            'zipCode' => 'required,max:9',
-            'email' => 'email|required',
-            'address' => 'required',
-            'number' => 'required|numeric',
-            'neighborhood' => 'required',
-            'province' => 'required',
-            'civilState' => 'required',
-            'gender' => ['required',Rule::in(['Masculino','Feminino','Outro'])]
-        ];
+    public function store(UserRequest $request) {
+        $validatedData = $request->validated();
+        return response()->json(['data' => User::create($validatedData)]);
     }
 }

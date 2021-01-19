@@ -19,11 +19,15 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function message() 
+    public function validationData()
+    {
+        return $this->json()->all();
+    }
+    public function messages() 
     {
         return [
-            'required' => 'Um :field é necessário',
-            'in' => 'O :field não esta entre :values'
+            'required' => 'Um :attribute  é necessário',
+            'in' => 'O :attribute  não esta entre :values'
         ];
     }
     public function rules()
@@ -31,13 +35,15 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'phone' => 'required',
-            'zipCode' => 'required,max:9',
+            'zipCode' => 'required|max:9',
             'email' => 'email|required',
             'address' => 'required',
             'number' => 'required|numeric',
             'neighborhood' => 'required',
             'province' => 'required',
             'civilState' => 'required',
+            'city' => 'required',
+            'password' => 'required',
             'gender' => ['required',Rule::in(['Masculino','Feminino','Outro'])]
         ];
     }

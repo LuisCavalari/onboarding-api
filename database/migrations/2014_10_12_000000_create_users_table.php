@@ -27,7 +27,10 @@ class CreateUsersTable extends Migration
             $table->integer('number');
             $table->string('province');
             $table->string('civilState');
-            $table->dateTime('last_login')->nullable();
+            $table->dateTime('last_login')->nullable('
+            2021-01-19T12:55:15+00:00
+            2021-01-19T12:55:15+00:00
+            ');
             $table->timestamps();
         });
     }
