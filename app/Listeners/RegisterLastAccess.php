@@ -25,7 +25,7 @@ class RegisterLastAccess
     public function handle(UserLogin $event)
     {
         $userId = $event->userId();
-        $currentTime = Carbon::now();
+        $currentTime = Carbon::now('America/Sao_Paulo');
         User::where('id',$userId)
               ->update(['last_login' => $currentTime]);
     }

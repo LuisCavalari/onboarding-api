@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/user',[UserController::class,'store']);
 Route::post('/auth/login', [AuthController::class,'login']);
+Route::get('/auth/me', [AuthController::class,'me']);

@@ -12,6 +12,7 @@ class UserController extends Controller
         $validatedData = $request->validated();
         $user = User::create($validatedData);
         event(new NewUserRegistred($user));
-        return response()->json(['data' => $user ]);
+        $token = auth('api')->login($user);
+        return response()->json(['user' => $user , 'token' => $token]);
     }
 }
