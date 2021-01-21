@@ -13,6 +13,6 @@ class UserController extends Controller
         $user = User::create($validatedData);
         event(new NewUserRegistred($user));
         $token = auth('api')->login($user);
-        return response()->json(['user' => $user , 'token' => $token]);
+        return response()->json(['user' => $user , 'access_token' => $token]);
     }
 }

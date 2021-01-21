@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserLogin;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -28,7 +27,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['message' => 'Usuario ou senha incorretos'], 401);
+            return response()->json(['errors' => ['Usuario ou senha incorretos']], 401);
         }
        
         return $this->respondWithToken($token);

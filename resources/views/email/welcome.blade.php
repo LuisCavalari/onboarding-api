@@ -14,5 +14,5 @@
 </style>
 <div class="container">
     <h2>Bem vindo, {{ $user->name }}</h2>
-    <button>Ir para o site</button>
+    <br>
 </div>
